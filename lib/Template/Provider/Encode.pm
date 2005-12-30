@@ -5,7 +5,7 @@ use warnings;
 use base qw(Template::Provider);
 use Encode;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 our $INPUT_ENCODING;
 our $OUTPUT_ENCODING;
 
@@ -34,18 +34,18 @@ sub _load {
 
 1;
 __END__
-# Below is stub documentation for your module. You'd better edit it!
 
 =head1 NAME
 
-Template::Provider::Encode - Perl extension for blah blah blah
+Template::Provider::Encode - Encode templates for Template Toolkit
 
 =head1 SYNOPSIS
 
-  use Template::Provider::Encode::UTF8 qw/shiftjis/;
+  use Template::Provider::Encode;
   use Template;
   my $tt = Template->new(
-      LOAD_TEMPLATES => [Template::Provider::Encode::UTF8->new]
+      LOAD_TEMPLATES => [Template::Provider::Encode::UTF8->new({ie=>'shiftjis'
+                                                                oe=>'utf8'})]
   );
   my $author = "\xe3\x81\x9b\xe3\x81\x8d\xe3\x82\x80\xe3\x82\x89";
   $tt->process('t/tmpl/SJIS.tt2', {author => $author});
@@ -56,11 +56,11 @@ TBW
 
 =head1 SEE ALSO
 
- Encode, Encode::Guess, Template::Provider
+L<Encode>, L<Template::Provider>
 
 =head1 AUTHOR
 
-Masayoshi Sekimura, E<lt>sekimura at gmail dot com<gt>
+Masayoshi Sekimura, E<lt>sekimura at gmail dot comE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
